@@ -9,13 +9,18 @@ class Search extends Component {
   static propTypes = {
     searchUsers: PropTypes.func.isRequired,
     clearUsers: PropTypes.func.isRequired,
-    showClear: PropTypes.bool.isRequired
+    showClear: PropTypes.bool.isRequired,
+    setAlert: PropTypes.func.isRequired
   };
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.searchUsers(this.state.text); // pass serarch string up to app.js  };
-    this.setState({ text: '' }); // set local state to null
+    if (this.state.text === '') {
+      this.props.setAlert('Please enter a search string.', 'danger');
+    } else {
+      this.props.searchUsers(this.state.text); // pass serarch string up to app.js  };
+      this.setState({ text: '' }); // set local state to null
+    }
   };
 
   onChange = e => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 /**
  * Class/Function definition
@@ -10,6 +11,12 @@ const Navbar = ({ icon, title }) => {
       <h1>
         <i className={icon} /> {title}
       </h1>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+        </li>
+      </ul>
     </nav>
   );
 };
